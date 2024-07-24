@@ -6,7 +6,6 @@ const SECRET_KEY = 'your-secret-key';
 export async function POST(req: NextRequest) {
   const { username, password } = await req.json();
 
-  // Replace with your user validation logic
   if (username === 'admin' && password === 'password') {
     const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' });
     return NextResponse.json({ user: { username }, token });
